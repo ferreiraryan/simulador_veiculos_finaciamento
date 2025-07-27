@@ -1,0 +1,35 @@
+[
+  {
+    "type": "car",
+    "data": {
+      "nome": "Sedan Clássico",
+      "preco": 85000.00,
+      "descricao": "Um carro sedan confiável e espaçoso, ideal para a família e viagens longas.",
+      "imagemUrl": "https://memes.casa/imagens/a-pe-e-pior-carro-velho.jpg",
+      "tipoCarroceria": "Sedan",
+      "numeroPortas": 4
+    }
+  },
+  {
+    "type": "moto",
+    "data": {
+      "nome": "Esportiva Veloz",
+      "preco": 55000.00,
+      "descricao": "Para quem busca adrenalina e performance em duas rodas.",
+      "imagemUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXTPAlvtF99fMNRwgrVVAhT4YtJpvHKN3ocw&s",
+      "cilindradas": 600,
+      "tipo": "Veloz"
+    }
+  },
+  {
+    "type": "caminhao",
+    "data": {
+      "nome": "Caminhão de Carga",
+      "preco": 180000.00,
+      "descricao": "Robusto e pronto para qualquer trabalho pesado.",
+      "imagemUrl": "https://pbs.twimg.com/media/EY131P9XQAIrjr-.jpg",
+      "capacidadeCarga": 10.5,
+      "numeroEixos": 3
+    }
+  }
+]
