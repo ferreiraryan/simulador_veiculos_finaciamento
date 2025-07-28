@@ -1,3 +1,4 @@
+// Modelo abstrato de veiculos
 abstract class VehicleModel {
   final String nome;
   final double preco;
@@ -10,7 +11,7 @@ abstract class VehicleModel {
     required this.descricao,
     required this.imagemUrl,
   });
-
+  // Função que atribui factorys das classes respectivas
   factory VehicleModel.fromJson(Map<String, dynamic> json) {
     final String type = json['type'];
     final Map<String, dynamic> data = json['data'];
@@ -28,6 +29,7 @@ abstract class VehicleModel {
   }
 }
 
+// Classe concreta carro
 class CarModel extends VehicleModel {
   final String tipoCarroceria;
   final int numeroPortas;
@@ -40,7 +42,7 @@ class CarModel extends VehicleModel {
     required this.tipoCarroceria,
     required this.numeroPortas,
   });
-
+  // Factory: Transforma dados json em uma instancia da classe
   factory CarModel.fromJson(Map<String, dynamic> json) {
     return CarModel(
       nome: json['nome'],
@@ -53,6 +55,7 @@ class CarModel extends VehicleModel {
   }
 }
 
+// Classe concreta moto
 class MotoModel extends VehicleModel {
   final int cilindradas;
   final String tipo;
@@ -66,6 +69,7 @@ class MotoModel extends VehicleModel {
     required this.tipo,
   });
 
+  // Factory: Transforma dados json em uma instancia da classe
   factory MotoModel.fromJson(Map<String, dynamic> json) {
     return MotoModel(
       nome: json['nome'],
@@ -78,6 +82,7 @@ class MotoModel extends VehicleModel {
   }
 }
 
+// Classe concreta caminhão
 class CaminhaoModel extends VehicleModel {
   final double capacidadeCarga;
   final int numeroEixos;
@@ -91,6 +96,7 @@ class CaminhaoModel extends VehicleModel {
     required this.numeroEixos,
   });
 
+  // Factory: Transforma dados json em uma instancia da classe
   factory CaminhaoModel.fromJson(Map<String, dynamic> json) {
     return CaminhaoModel(
       nome: json['nome'],
