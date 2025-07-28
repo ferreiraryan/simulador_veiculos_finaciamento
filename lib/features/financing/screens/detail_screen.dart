@@ -211,11 +211,14 @@ class _DetailScreenState extends State<DetailScreen> {
           const SizedBox(height: 24),
           Center(
             child: ElevatedButton(
-              onPressed: () => _calcular(precoVeiculo),
+              onPressed: () => _calcular(
+                precoVeiculo,
+              ), // Chama a funcao que calcula o financiamento
               child: const Text('Calcular Parcelas'),
             ),
           ),
           const SizedBox(height: 24),
+          // So mostra a sessao de financiamento se o financiamento for valido
           if (_valorParcela > 0)
             Center(
               child: Column(
