@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:simulador_financeiro/app/models/vehicle_model.dart';
 import 'package:simulador_financeiro/app/services/financing_service.dart';
 
+// Tela de detalhes
 class DetailScreen extends StatefulWidget {
   const DetailScreen({super.key});
 
@@ -9,12 +10,16 @@ class DetailScreen extends StatefulWidget {
   State<DetailScreen> createState() => _DetailScreenState();
 }
 
+// Estados da tela de detalhe
 class _DetailScreenState extends State<DetailScreen> {
-  final _formKey = GlobalKey<FormState>();
-  final _entradaController = TextEditingController();
+  final _formKey =
+      GlobalKey<FormState>(); // Chave de acesso aos dados do formulario
+  final _entradaController =
+      TextEditingController(); // Controladora da caixa de texto
   final _prazoController = TextEditingController();
   double _valorParcela = 0.0;
 
+  // Funcao que valida os formularios e usa o servico para calcular
   void _calcular(double precoVeiculo) {
     if (_formKey.currentState!.validate()) {
       final double entrada = double.tryParse(_entradaController.text) ?? 0.0;
@@ -43,6 +48,7 @@ class _DetailScreenState extends State<DetailScreen> {
     }
   }
 
+  // Limpa os dados de formulario quando sumir da tela
   @override
   void dispose() {
     _entradaController.dispose();
@@ -52,7 +58,9 @@ class _DetailScreenState extends State<DetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final veiculo = ModalRoute.of(context)!.settings.arguments as VehicleModel;
+    final veiculo =
+        ModalRoute.of(context)!.settings.arguments
+            as VehicleModel; // Pega o veiculo pela requisicao das rotas
 
     return Scaffold(
       appBar: AppBar(title: Text(veiculo.nome)),
@@ -61,15 +69,22 @@ class _DetailScreenState extends State<DetailScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildVehicleInfoSection(context, veiculo),
+            _buildVehicleInfoSection(
+              context,
+              veiculo,
+            ), // Chama a funcao que constroi os dados do veiculo
             const Divider(height: 32, thickness: 1),
-            _buildCalculatorSection(context, veiculo.preco),
+            _buildCalculatorSection(
+              context,
+              veiculo.preco,
+            ), // Chama a funcao que constroi a calculadora
           ],
         ),
       ),
     );
   }
 
+  // Retorna uma coluna que mostra de forma estilizada os dados do veiculo
   Widget _buildVehicleInfoSection(BuildContext context, VehicleModel veiculo) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -127,6 +142,7 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
 
+  // Retorna uma sessao de detalhes
   Widget _buildDetailRow(String title, String value) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
@@ -139,9 +155,10 @@ class _DetailScreenState extends State<DetailScreen> {
     );
   }
 
+  // Retorna uma calculadora de formulario estilizada
   Widget _buildCalculatorSection(BuildContext context, double precoVeiculo) {
     return Form(
-      key: _formKey,
+      key: _formKey, // Chave que sera usada para acessar os dados
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -158,6 +175,7 @@ class _DetailScreenState extends State<DetailScreen> {
               border: OutlineInputBorder(),
               prefixIcon: Icon(Icons.attach_money),
             ),
+            // Valida o valor inserido
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Por favor, informe um valor de entrada.';
@@ -177,6 +195,8 @@ class _DetailScreenState extends State<DetailScreen> {
               border: OutlineInputBorder(),
               prefixIcon: Icon(Icons.calendar_today),
             ),
+
+            // Valida o valor inserido
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Por favor, informe o prazo.';
