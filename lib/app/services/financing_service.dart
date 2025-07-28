@@ -1,3 +1,4 @@
+// Classe responsável pelos cálculos de financiamento
 class FinancingService {
   static const double _taxaJuros = 0.02;
 
