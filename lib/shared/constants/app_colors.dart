@@ -4,7 +4,7 @@ class AppColors {
   // Cores Primárias
   static const Color primary = Color(0xFF19647E);
 
-  // Cores de Acento e Destaque
+  // Cores de Destaque
   static const Color accent = Color(0xFFFF4081);
   static const Color success = Color(0xFF4CAF50);
   static const Color warning = Color(0xFFFFC107);
